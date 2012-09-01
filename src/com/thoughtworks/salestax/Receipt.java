@@ -2,37 +2,27 @@ package com.thoughtworks.salestax;
 
 import java.util.List;
 
-public class Receipt {
-	private Basket basket;
+public final class Receipt {	
+	private List<BasketItem> items;
 	private Float netTotal;
 	private Float totalTax;
 	private Float grossTotal;
 	
-	public Receipt(Basket basket) {
+	public Receipt(List<BasketItem> items, Float netTotal, Float totalTax,
+			Float grossTotal) {
 		super();
-		this.basket = basket;
-		computeTotals();		
-	}
-	
-	private void computeTotals() {
-		List<BasketItem> items = basket.getBasketItems();
-		for (BasketItem item : items) {
-			this.netTotal += item.getNetAmount();
-			this.totalTax += item.getTax();
-		}
-		this.grossTotal = this.netTotal + this.totalTax;
+		this.items = items;
+		this.netTotal = netTotal;
+		this.totalTax = totalTax;
+		this.grossTotal = grossTotal;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder receiptStr = new StringBuilder();
-		List<BasketItem> items = basket.getBasketItems();
-		for (BasketItem item : items) {
-			Integer qty = item.getQuantity();
-			String itemName = item.getItemName();
-			Float grossAmount = item.getGrossAmount();
-			String receiptItemLine = String.format("%d %s: %.2f\n", qty, itemName, grossAmount);
-			receiptStr.append(receiptItemLine);
+		for (BasketItem item : this.items) {			
+			receiptStr.append(item.toString());
+			receiptStr.append("\n");
 		}
 		String receiptSalesTaxLine = String.format("Sales Taxes: %.2f\n", this.totalTax);
 		String receiptTotalLine = String.format("Total: %.2f\n", this.grossTotal);

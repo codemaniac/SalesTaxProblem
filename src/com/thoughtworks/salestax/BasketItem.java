@@ -1,8 +1,8 @@
 package com.thoughtworks.salestax;
 
-public class BasketItem {
+public final class BasketItem {
 
-	private Item item;
+	private Item item;	
 	private Integer quantity;
 	private Float netAmount;	
 	private Float tax;
@@ -11,23 +11,18 @@ public class BasketItem {
 	public BasketItem(Item item, Integer quantity) {
 		super();
 		this.item = item;
-		this.quantity = quantity;
-		computeAmountsAndTax();
-	}
-
-	private void computeAmountsAndTax() {
+		this.quantity = quantity;		
 		this.netAmount = this.item.getUnitPrice() * this.quantity;
-		Boolean isImportedItem = this.item.getIsImported();
-		if (isImportedItem) {
-			Float tax = 0.05f * this.netAmount;
-			this.grossAmount = this.netAmount + tax;
-		}		
-		Boolean isBasketItemTaxable = this.item.getCatagory().getIsTaxable();
-		if (isBasketItemTaxable) {
-			Float tax = 0.1f * this.netAmount;
-			this.grossAmount = isImportedItem ? this.grossAmount + tax : this.netAmount + tax;
-		}
 	}
+	
+	public void setTax(Float tax) {
+		this.tax = tax;
+		this.grossAmount = this.netAmount + this.tax;
+	}	
+	
+	public Item getItem() {
+		return item;
+	}		
 	
 	public String getItemName() {
 		return this.item.getName();
@@ -48,4 +43,9 @@ public class BasketItem {
 	public Float getGrossAmount() {
 		return grossAmount;
 	}
+
+	@Override
+	public String toString() {		
+		return String.format("%d %s: %.2f", this.quantity, this.item.getName(), this.grossAmount);
+	}	
 }

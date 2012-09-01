@@ -1,6 +1,21 @@
 package com.thoughtworks.salestax;
 
-public class Item {
+public final class Item {
+	
+	static enum Catagory {
+		FOOD(false), BOOK(false), MEDICAL(false), OTHER(true);
+
+		private Boolean isTaxable;
+
+		private Catagory(Boolean b) {
+			isTaxable = b;
+		}
+
+		public Boolean getIsTaxable() {
+			return isTaxable;
+		}
+	}
+	
 	private String name;
 	private Catagory catagory;
 	private Float unitPrice;
@@ -31,9 +46,10 @@ public class Item {
 
 	public Float getUnitPrice() {
 		return unitPrice;
-	}
-	
+	}	
+
 	public Boolean getIsImported() {
 		return isImported;
 	}
+	
 }
