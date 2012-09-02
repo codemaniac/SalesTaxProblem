@@ -1,7 +1,7 @@
 bin/
 *.class
-.settings
+.settings/
 .classpath
 .project
-.metadata
+.metadata/
 *.*~
