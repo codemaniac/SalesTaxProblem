@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<items>
+	<item>
+		<name>book</name>
+		<catagory>BOOK</catagory>		
+		<type>local</type>
+	</item>
+	<item>
+		<name>music CD</name>
+		<catagory>OTHER</catagory>		
+		<type>local</type>
+	</item>
+	<item>
+		<name>chocolate bar</name>
+		<catagory>FOOD</catagory>		
+		<type>local</type>		
+	</item>
+	<item>
+		<name>imported box of chocolates</name>
+		<catagory>FOOD</catagory>		
+		<type>import</type>
+	</item>
+	<item>
+		<name>imported bottle of perfume</name>
+		<catagory>OTHER</catagory>		
+		<type>import</type>
+	</item>
+	<item>
+		<name>bottle of perfume</name>
+		<catagory>OTHER</catagory>		
+		<type>local</type>		
+	</item>
+	<item>
+		<name>packet of headache pills</name>
+		<catagory>MEDICAL</catagory>		
+		<type>local</type>		
+	</item>
+	<item>
+		<name>box of imported chocolates</name>
+		<catagory>FOOD</catagory>		
+		<type>import</type>
+	</item>
+</items>
